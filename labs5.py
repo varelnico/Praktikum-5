@@ -1,12 +1,9 @@
 print("Nama : Varel Nico Ramadhan")
-print("NIM : 312510156")
-print()
-print("-TUGAS PERULANGAN-")
-print()
-print("=== Program Nilai Mahasiswa ===")
-print()
-# Siapkan list kosong untuk menampung data
+print("NIM : 312510156\n")
+print("-TUGAS DICTIONARY-\n")
+print("=== Program Nilai Mahasiswa ===\n")
 
+# Siapkan list kosong untuk menampung data
 data_mahasiswa = []
 
 while True:
@@ -29,19 +26,35 @@ while True:
         print("-"*70, "\n")
 
     elif pilihan == "t":
-    nama = input("Nama Mahasiswa : ")
-    nim = input("NIM Mahasiswa  : ")
-    tugas = float(input("Nilai Tugas    : "))
-    uts = float(input("Nilai UTS      : "))
-    uas = float(input("Nilai UAS      : "))
+        nama = input("Nama Mahasiswa : ")
+        nim = input("NIM Mahasiswa  : ")
+        tugas = float(input("Nilai Tugas    : "))
+        uts = float(input("Nilai UTS      : "))
+        uas = float(input("Nilai UAS      : "))
 
-    nilai_akhir = (tugas * 0.30) + (uts * 0.35) + (uas * 0.35)
+        nilai_akhir = (tugas * 0.30) + (uts * 0.35) + (uas * 0.35)
 
     # Simpan sebagai list biasa
-    data_mahasiswa.append([nama, nim, tugas, uts, uas, nilai_akhir])
+        data_mahasiswa.append([nama, nim, tugas, uts, uas, nilai_akhir])
 
-    print("Data berhasil ditambahkan!\n")
+        print("Data berhasil ditambahkan!\n")
 
+    elif pilihan == "u":
+        cari = input("Masukan Nama yang ingin di ubah: ")
+
+        found = False
+        for m in data_mahasiswa:
+            if m ["nama"] == cari:
+                print("Data ditemukan, Masukan nilai baru.")
+                m["tugas"] = float("Nilai Tugas     : ")
+                m["uts"] = float("Nilai UTS     : ")
+                m["uas"] = float("Nilai UTS     : ")
+                m["nilai_akhir"] = (m["tugas"]*0.30) + (m["uts"]*0.35) + (m["uas"]*0.35)
+                print("Data berhasi diubah\n")
+                found = True
+                break
+        if not found:
+            print("Data tidak ditemukan\n")
 
 i = 1
 for mhs in data_mahasiswa:
