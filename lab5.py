@@ -1,99 +1,88 @@
 print("Nama : Varel Nico Ramadhan")
-print("NIM  : 312510156\n")
-print("=== PROGRAM INPUT NILAI ===\n")
+print("NIM : 312510156\n")
+print("-TUGAS DICTIONARY-\n")
+print("=== Program Nilai Mahasiswa ===\n")
 
-data = []   # List untuk menyimpan semua data mahasiswa
+# Siapkan list kosong untuk menampung data
+data_mahasiswa = []
 
 while True:
     print("[(L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar]")
     pilihan = input("Pilih menu: ").lower()
 
-    # =============================== LIHAT DATA ====================================
     if pilihan == "l":
         print("\nDaftar Nilai")
         print("="*70)
         print("| NO |   NIM   |   NAMA   | TUGAS | UTS | UAS | AKHIR |")
         print("-"*70)
 
-        if not data:
+        if not data_mahasiswa:
             print("|                       TIDAK ADA DATA                      |")
         else:
             no = 1
-            for m in data:
-                print(f"| {no:<2} | {m['nim']:<6} | {m['nama']:<8} | {m['tugas']:<5} | {m['uts']:<3} | {m['uas']:<3} | {m['akhir']:<5.2f} |")
+            for m in data_mahasiswa:
+                print(f"| {no:<2} | {m['nim']:<6} | {m['nama']:<8} | {m['tugas']:<5} | {m['uts']:<3} | {m['uas']:<3} | {m['nilai_akhir']:<5.2f} |")
                 no += 1
         print("-"*70, "\n")
 
-    # =============================== TAMBAH DATA ====================================
     elif pilihan == "t":
-        nim = input("NIM        : ")
-        nama = input("Nama       : ")
-        tugas = float(input("Nilai Tugas: "))
-        uts = float(input("Nilai UTS  : "))
-        uas = float(input("Nilai UAS  : "))
+        nama = input("Nama Mahasiswa : ")
+        nim = input("NIM Mahasiswa  : ")
+        tugas = float(input("Nilai Tugas    : "))
+        uts = float(input("Nilai UTS      : "))
+        uas = float(input("Nilai UAS      : "))
 
-        akhir = (tugas * 0.30) + (uts * 0.35) + (uas * 0.35)
+        nilai_akhir = (tugas * 0.30) + (uts * 0.35) + (uas * 0.35)
 
-        data.append({
-            "nama": nama,
-            "nim": nim,
-            "tugas": tugas,
-            "uts": uts,
-            "uas": uas,
-            "akhir": akhir
-        })
+    # Simpan sebagai list biasa
+        data_mahasiswa.append({"nama": nama, "nim": nim, "tugas": tugas, "uts": uts, "uas": uas, "nilai_akhir": nilai_akhir})
 
         print("Data berhasil ditambahkan!\n")
 
-    # =============================== UBAH DATA ======================================
     elif pilihan == "u":
-        cari = input("Masukkan NIM yang ingin diubah: ")
+        cari = input("Masukan Nama yang ingin di ubah: ")
 
         found = False
-        for m in data:
-            if m["nim"] == cari:
-                print("Data ditemukan. Masukkan nilai baru.")
-                m["nama"] = input("Nama baru     : ")
-                m["tugas"] = float(input("Nilai Tugas   : "))
+        for m in data_mahasiswa:
+            if m ["nama"] == cari:
+                print("Data ditemukan, Masukan nilai baru.")
+                m["tugas"] = float(input("Nilai Tugas     : "))
                 m["uts"] = float(input("Nilai UTS     : "))
-                m["uas"] = float(input("Nilai UAS     : "))
-                m["akhir"] = (m["tugas"]*0.30) + (m["uts"]*0.35) + (m["uas"]*0.35)
-                print("Data berhasil diubah!\n")
+                m["uas"] = float(input("Nilai UTS     : "))
+                m["nilai_akhir"] = (m["tugas"]*0.30) + (m["uts"]*0.35) + (m["uas"]*0.35)
+                print("Data berhasi diubah\n")
                 found = True
                 break
-        
-        if not found:
-            print("Data tidak ditemukan.\n")
 
-    # =============================== HAPUS DATA ======================================
+        if not found:
+            print("Data tidak ditemukan\n")
+
     elif pilihan == "h":
-        hapus = input("Masukkan NIM yang ingin dihapus: ")
-        data = [m for m in data if m["nim"] != hapus]
+        hapus = input("Masukan Nama yang ingin dihapus: ")
+        data_mahasiswa = [m for m in data_mahasiswa if m["nama"] != hapus]
         print("Data berhasil dihapus (jika ada).\n")
 
-    # =============================== CARI DATA =======================================
     elif pilihan == "c":
-        cari = input("Masukkan NIM yang dicari: ")
+        cari = input("Masukan Nama yang dicari: ")
         print()
 
-        ketemu = False
-        for m in data:
-            if m["nim"] == cari:
-                print("Data Ditemukan:")
-                print("Nama        :", m["nama"])
-                print("NIM         :", m["nim"])
-                print("Tugas       :", m["tugas"])
-                print("UTS         :", m["uts"])
-                print("UAS         :", m["uas"])
-                print("Nilai Akhir :", round(m["akhir"], 2))
+        Ketemu = False
+        for m in data_mahasiswa:
+            if m["nama"] == cari:
+                print("Data ditemukan:")
+                print("Nama         :", m["nama"])
+                print("NIM          :", m["nim"])
+                print("Tugas        :", m["tugas"])
+                print("UTS          :", m["uts"])
+                print("UAS          :", m["uas"])
+                print("Nilai Akhir  :", m["nilai_akhir"])
                 print()
-                ketemu = True
+                Ketemu = False
                 break
-
-        if not ketemu:
+        
+        if not Ketemu:
             print("Data tidak ditemukan.\n")
 
-    # =============================== KELUAR ==========================================
     elif pilihan == "k":
         print("Program selesai.")
         break
