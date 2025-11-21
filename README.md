@@ -1,10 +1,7 @@
 ## Nama : Varel Nico Ramadhan
 ## Nim  : 312510156
 
- PENJELASAN PROGRAM SECARA LENGKAP
-
-Program ini digunakan untuk mengelola daftar nilai mahasiswa menggunakan dictionary di Python.
-Pengguna dapat menambah, mengubah, menghapus, menampilkan, dan mencari data mahasiswa.
+Penjelasan Dari langkah - langkah :
 
  1. Dictionary Data Mahasiswa
 data_mahasiswa = {}
